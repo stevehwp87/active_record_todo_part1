@@ -83,6 +83,8 @@ case command
 
 end
 
+#******************************************************************
+
   # def sen_state(state)
   #   sen = Congressman.where(title: "Sen", state: state)
   #   sen.order(:lastname)
@@ -90,7 +92,7 @@ end
   #  sen.each do |sen|
   #     puts "#{sen.title} #{sen.name} #{sen.state} (#{sen.party})"
   #   end
-
+#******************************************************************
 # irb(main):001:0> Task.all
 # => #<ActiveRecord::Relation [#<Task id: 2, task: "Quam aut dolor ex odit ad sequi labore magnam.", created_at: "2015-05-25 03:11:57", updated_at: "2015-05-25 03:11:57">, #<Task id: 3, task: "Dolor perspiciatis hic eos.", created_at: "2015-05-25 03:11:59", updated_at: "2015-05-25 03:11:59">, #<Task id: 13, task: "something here", created_at: "2015-05-25 04:26:47", updated_at: "2015-05-25 04:26:47">]>
 # irb(main):002:0> Task.all[2]
@@ -99,15 +101,7 @@ end
 # => #<Task id: 13, task: "something here", created_at: "2015-05-25 04:26:47", updated_at: "2015-05-25 04:26:47">
 # task = Task.all[3]
 # task.update(task: 'huhuhuhuy')
-
-
-
-# when "list"
-#     all_tasks = Task.all
-#     all_tasks.each do |task|
-#
-#       puts task.task
-
+#******************************************************************
 
 # irb(main):003:0> task = Task.find(11)
 # \=> #<Task id: 11, task: "[\"ths\", \"is\", \"new\", \"task\"]", created_at: "2015-05-25 03:34:40", updated_at: "2015-05-25 03:34:40">
@@ -116,6 +110,5 @@ end
 # irb(main):005:0> task.destroy
 # => #<Task id: 11, task: "[\"ths\", \"is\", \"new\", \"task\"]", created_at: "2015-05-25 03:34:40", updated_at: "2015-05-25 03:34:40">
 
+#******************************************************************
 
-
-# del_task = Task.destroy(task: (parameters))

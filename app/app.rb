@@ -4,5 +4,6 @@
 
 # require_relative 'models/list.rb'
 require_relative 'models/task.rb'
+require_relative 'models/list.rb'
 
 require 'faker'
