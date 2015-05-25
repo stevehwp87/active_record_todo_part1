@@ -27,7 +27,12 @@ case command
       # array_arr << array
       # array_arr.each_with_index do |str,index|
       # p "#{index} #{array_arr}"
-      p "#{index+1}. #{task.task}"
+      if task.complete == true
+        box = "[X]"
+      else
+        box = "[ ]"
+      end
+      p "#{index+1}. #{box} #{task.task}"
     # p Task.all(:id)
     # contact_array = []
     # Task.each do |result|
@@ -52,11 +57,39 @@ case command
     Task.all[index].destroy
 
   when 'complete'
+    # index = (parameters.to_i - 1)
+    # k = Task.all[index]
+    # p k
+    # task = Task.all[index]
     index = (parameters.to_i - 1)
-    Task.all[index].gsub!
-  # end
+    task = Task.all[index]
+    task.complete = true
+    task.save
+
+  when 'done'
+    list_done = Task.where(complete: true)
+    box = "[X]"
+    list_done.each do |ld|
+      puts "#{box} #{ld.task}"
+    end
+
+
+  when 'not_done'
+    list_not_done = Task.where(complete: false)
+    box = "[ ]"
+    list_not_done.each do |lnd|
+      puts "#{box} #{lnd.task}"
+    end
+
 end
 
+  # def sen_state(state)
+  #   sen = Congressman.where(title: "Sen", state: state)
+  #   sen.order(:lastname)
+
+  #  sen.each do |sen|
+  #     puts "#{sen.title} #{sen.name} #{sen.state} (#{sen.party})"
+  #   end
 
 # irb(main):001:0> Task.all
 # => #<ActiveRecord::Relation [#<Task id: 2, task: "Quam aut dolor ex odit ad sequi labore magnam.", created_at: "2015-05-25 03:11:57", updated_at: "2015-05-25 03:11:57">, #<Task id: 3, task: "Dolor perspiciatis hic eos.", created_at: "2015-05-25 03:11:59", updated_at: "2015-05-25 03:11:59">, #<Task id: 13, task: "something here", created_at: "2015-05-25 04:26:47", updated_at: "2015-05-25 04:26:47">]>
@@ -64,7 +97,8 @@ end
 # => #<Task id: 13, task: "something here", created_at: "2015-05-25 04:26:47", updated_at: "2015-05-25 04:26:47">
 # irb(main):003:0> Task.all[2].destroy
 # => #<Task id: 13, task: "something here", created_at: "2015-05-25 04:26:47", updated_at: "2015-05-25 04:26:47">
-
+# task = Task.all[3]
+# task.update(task: 'huhuhuhuy')
 
 
 
