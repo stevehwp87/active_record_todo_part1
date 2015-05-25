@@ -3,7 +3,7 @@ require_relative 'config/application'
 # puts "Put your application code in #{File.expand_path(__FILE__)}"
 
 
-input = ARGV
+# input = ARGV
 # p input
 # input.delete_at(0)
 command = ARGV[0]
@@ -16,6 +16,7 @@ parameters = ARGV[1..-1].join(" ")
 # end
 
 p command
+
 
 case command
   when "list"
@@ -33,34 +34,19 @@ case command
         box = "[ ]"
       end
       p "#{index+1}. #{box} #{task.task}"
-    # p Task.all(:id)
-    # contact_array = []
-    # Task.each do |result|
-    #   contact_array << Task.new(id: result[0], task: result[1])
-    #   p contact_array
-    # end
-    # end
+
   end
 
   when "add"
     new_task = Task.create(task: parameters)
 
   when "delete"
-    # all_tasks = Task.all
-    # all_tasks.each_with_index do |task,index|
-    # parameters = index + 1
-    # parameters = Task.find()
-    # del_task = Task.destroy(task: parameters)
-    # Task.all
-    # index = parameters.to_i+1
+
     index = (parameters.to_i - 1)
     Task.all[index].destroy
 
   when 'complete'
-    # index = (parameters.to_i - 1)
-    # k = Task.all[index]
-    # p k
-    # task = Task.all[index]
+
     index = (parameters.to_i - 1)
     task = Task.all[index]
     task.complete = true
@@ -80,6 +66,13 @@ case command
     list_not_done.each do |lnd|
       puts "#{box} #{lnd.task}"
     end
+
+  when 'uncomplete'
+
+    index = (parameters.to_i - 1)
+    task = Task.all[index]
+    task.complete = false
+    task.save
 
 end
 
